@@ -1,0 +1,10 @@
+* Thu Jan 31 2013 Li Zhang <li2012.zhang@samsung.com> accepted/tizen_2.0/20130120.045825@585a4e4
+- Remove the characters out of BMP range
+- Remove unnecessary database
+- flush preedit when immcontext calling reset
+- Remove ja,ko,additional database rpm
+- change package and spec file name
+- Add m4 files
+- ise-engine-tables-zh-0.0.0125, Migrate scim-tables to Tizen
+- Initial empty repository
+
