@@ -6,7 +6,6 @@
  * Smart Common Input Method
  * 
  * Copyright (c) 2002-2005 James Su <suzhe@tsinghua.org.cn>
- * Copyright (c) 2012-2013 Samsung Electronics Co., Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,9 +23,6 @@
  *
  * $Id: scim_table_imengine.cpp,v 1.12 2006/01/12 08:43:29 suzhe Exp $
  *
- * Modifications by Samsung Electronics Co., Ltd.
- *
- * 1.Added auto commit feature for mobile user
  */
 
 #define Uses_STL_AUTOPTR
@@ -744,8 +740,9 @@ TableInstance::move_preedit_caret (unsigned int pos)
 void
 TableInstance::reset ()
 {
-    if (m_inputted_keys.size () && m_preedit_string.size()) {
+    if (m_preedit_string.size()) {
         commit_string (m_preedit_string);
+        m_preedit_string.clear();
     }
     m_double_quotation_state = false;
     m_single_quotation_state = false;
@@ -1543,7 +1540,6 @@ TableInstance::refresh_preedit ()
     int start = 0;
     int length = 0;
     int caret = 0;
-    int end = 0;
     size_t i;
 
     if (m_inputted_keys.size () == 0) {
@@ -1606,14 +1602,8 @@ TableInstance::refresh_preedit ()
     AttributeList attrs;
 
     if (length)
-    {
-        if (start)
-            attrs.push_back (Attribute(0, start, SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_UNDERLINE));
         attrs.push_back (Attribute(start, length, SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_HIGHLIGHT));
-        end = start+length;
-        if (end < preedit_string.length())
-            attrs.push_back (Attribute(end, preedit_string.length()- end, SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_UNDERLINE));
-    }
+
     update_preedit_string (preedit_string, attrs);
     update_preedit_caret (caret);
 

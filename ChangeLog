@@ -1,11 +1,3 @@
-2013-01-18 14:50  li2012.zhang@samsung.com
-
-	* Remove Private Use Zone unicode character(E000-F8FF) from SmartCangJie6 database
-
-2013-01-15 15:00  li2012.zhang@samsung.com
-
-	* Adjust preedit AttributeList to follow the norm of edje_entry require.
-
 2008-12-22 14:59  ryo-dairiki
 
 	* po/ko.po, po/nl.po, tables/zh/Cantonese.txt.in: - Update the
