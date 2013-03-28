@@ -6,6 +6,7 @@
  * Smart Common Input Method
  * 
  * Copyright (c) 2002-2005 James Su <suzhe@tsinghua.org.cn>
+ * Copyright (c) 2012-2013 Samsung Electronics Co., Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,6 +23,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * $Id: scim_table_imengine.h,v 1.3 2005/10/26 07:53:53 suzhe Exp $
+ *
+ * Modifications by Samsung Electronics Co., Ltd.
+ *
+ * 1.Added auto commit feature for mobile user
  */
 
 #if !defined (__SCIM_TABLE_IMENGINE_H)
@@ -123,6 +128,7 @@ class TableInstance : public IMEngineInstanceBase
     std::vector<uint32>     m_converted_indexes;
 
     CommonLookupTable       m_lookup_table;
+    CommonLookupTable       m_common_lookup_table;
     std::vector <uint32>    m_lookup_table_indexes;
 
     uint32                  m_inputing_caret;

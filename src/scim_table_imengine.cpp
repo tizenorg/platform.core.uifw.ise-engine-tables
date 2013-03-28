@@ -6,6 +6,7 @@
  * Smart Common Input Method
  * 
  * Copyright (c) 2002-2005 James Su <suzhe@tsinghua.org.cn>
+ * Copyright (c) 2012-2013 Samsung Electronics Co., Ltd.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,6 +24,9 @@
  *
  * $Id: scim_table_imengine.cpp,v 1.12 2006/01/12 08:43:29 suzhe Exp $
  *
+ * Modifications by Samsung Electronics Co., Ltd.
+ *
+ * 1.Added auto commit feature for mobile user
  */
 
 #define Uses_STL_AUTOPTR
@@ -47,6 +51,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include <scim.h>
+#include <set>
 #include "scim_table_imengine.h"
 #include "scim_table_private.h"
 
@@ -93,6 +98,7 @@ static std::vector<String> _scim_sys_table_list;
 static std::vector<String> _scim_user_table_list;
 
 static ConfigPointer _scim_config;
+char g_common_symbol[]={'#','$','%','^','&','*','@'};
 
 static void
 _get_table_list (std::vector<String> &table_list, const String &path)
@@ -475,6 +481,12 @@ TableInstance::TableInstance (TableFactory *factory,
     m_lookup_table.set_candidate_labels (labels);
     m_lookup_table.set_page_size        (keys.size ());
     m_lookup_table.show_cursor ();
+
+    AttributeList attrs;
+    for (int i = 0;i < sizeof(g_common_symbol)/sizeof(char);i++) {
+        char _str[2]={g_common_symbol[i],0};
+        m_common_lookup_table.append_candidate (utf8_mbstowcs ((const char*)_str),attrs);
+    }
 }
 
 TableInstance::~TableInstance ()
@@ -655,6 +667,14 @@ TableInstance::process_key_event (const KeyEvent& rawkey)
 void
 TableInstance::select_candidate (unsigned int item)
 {
+
+    if (m_inputted_keys.size () == 0
+        && m_lookup_table.number_of_candidates() == 0
+        && item < sizeof(g_common_symbol)/sizeof(char)) {
+        char _str[2]={g_common_symbol[item],0};
+        commit_string(utf8_mbstowcs(_str));
+        return;
+    }
     lookup_select (item);
 }
 
@@ -740,9 +760,8 @@ TableInstance::move_preedit_caret (unsigned int pos)
 void
 TableInstance::reset ()
 {
-    if (m_preedit_string.size()) {
+    if (m_inputted_keys.size () && m_preedit_string.size()) {
         commit_string (m_preedit_string);
-        m_preedit_string.clear();
     }
     m_double_quotation_state = false;
     m_single_quotation_state = false;
@@ -765,8 +784,7 @@ TableInstance::reset ()
     m_inputing_key = 0;
 
     m_iconv.set_encoding (get_encoding ());
-
-    hide_lookup_table ();
+    refresh_lookup_table (true, false);
     hide_preedit_string ();
     hide_aux_string ();
 }
@@ -784,7 +802,6 @@ TableInstance::focus_in ()
     refresh_lookup_table (true, false);
     refresh_preedit ();
     refresh_aux_string ();
-
     initialize_properties ();
 }
 
@@ -1540,6 +1557,7 @@ TableInstance::refresh_preedit ()
     int start = 0;
     int length = 0;
     int caret = 0;
+    int end = 0;
     size_t i;
 
     if (m_inputted_keys.size () == 0) {
@@ -1602,8 +1620,14 @@ TableInstance::refresh_preedit ()
     AttributeList attrs;
 
     if (length)
+    {
+        if (start)
+            attrs.push_back (Attribute(0, start, SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_UNDERLINE));
         attrs.push_back (Attribute(start, length, SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_HIGHLIGHT));
-
+        end = start+length;
+        if (end < preedit_string.length())
+            attrs.push_back (Attribute(end, preedit_string.length()- end, SCIM_ATTR_DECORATE, SCIM_ATTR_DECORATE_UNDERLINE));
+    }
     update_preedit_string (preedit_string, attrs);
     update_preedit_caret (caret);
 
@@ -1633,7 +1657,7 @@ TableInstance::refresh_lookup_table (bool show, bool refresh)
                                          m_factory->m_long_phrase_first)) {
 
                 bool show_full_hint = m_factory->m_table.is_wildcard_key (key);
-
+                std::set<WideString> candiadtes;
                 for (size_t i = 0; i < phrases.size (); ++i) {
                     str = m_factory->m_table.get_phrase (phrases [i]);
 
@@ -1654,6 +1678,9 @@ TableInstance::refresh_lookup_table (bool show, bool refresh)
 
                         m_lookup_table.append_candidate (str, attrs);
 #endif
+                        if (candiadtes.find (str) != candiadtes.end())
+                            continue;
+                        candiadtes.insert (str);
                         m_lookup_table.append_candidate (str);
                         m_lookup_table_indexes.push_back (phrases [i]);
                     }
@@ -1669,10 +1696,10 @@ TableInstance::refresh_lookup_table (bool show, bool refresh)
              m_inputing_caret < m_inputted_keys [m_inputing_key].length () ||
              m_converted_strings.size () < m_inputted_keys.size () - 1)) {
             update_lookup_table (m_lookup_table);
-            show_lookup_table ();
         } else {
-            hide_lookup_table ();
+            update_lookup_table (m_common_lookup_table);
         }
+        show_lookup_table ();
     }
 }
 

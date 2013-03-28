@@ -1,3 +1,23 @@
+2013-01-28 15:21  li2012.zhang@samsung.com
+
+	* Disable AUTO_COMMIT and SELECT_KEYS for ZhuYin-Big
+
+2013-01-25 15:20  li2012.zhang@samsung.com
+
+	* Add always show candidate feature.
+
+2013-01-23 20:00  li2012.zhang@samsung.com
+
+	* Remove duplicated phrases in candidate.
+
+2013-01-18 14:50  li2012.zhang@samsung.com
+
+	* Remove Private Use Zone unicode character(E000-F8FF) from SmartCangJie6 database
+
+2013-01-15 15:00  li2012.zhang@samsung.com
+
+	* Adjust preedit AttributeList to follow the norm of edje_entry require.
+
 2008-12-22 14:59  ryo-dairiki
 
 	* po/ko.po, po/nl.po, tables/zh/Cantonese.txt.in: - Update the

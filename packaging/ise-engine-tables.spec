@@ -1,5 +1,5 @@
 %define nam               ise-engine-tables
-%define ver               0.0.0125
+%define ver               0.0.0228
 %define skim              0
 %define rel               1
 %define isf_version       1.0.0
@@ -154,47 +154,47 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 
 %files zh
 %defattr(-, root, root)
-%doc tables/zh/README-Erbi.txt tables/zh/README-CangJie.txt
-%{_datadir}/scim/tables/Array30.bin
-%{_datadir}/scim/tables/CangJie.bin
+#%%doc tables/zh/README-Erbi.txt tables/zh/README-CangJie.txt
+#%%{_datadir}/scim/tables/Array30.bin
+#%%{_datadir}/scim/tables/CangJie.bin
 %{_datadir}/scim/tables/CangJie3.bin
-%{_datadir}/scim/tables/CangJie5.bin
-%{_datadir}/scim/tables/Cantonese.bin
-%{_datadir}/scim/tables/CantonHK.bin
-%{_datadir}/scim/tables/CNS11643.bin
-%{_datadir}/scim/tables/Dayi3.bin
-%{_datadir}/scim/tables/Erbi.bin
-%{_datadir}/scim/tables/Erbi-QS.bin
-%{_datadir}/scim/tables/EZ-Big.bin
-%{_datadir}/scim/tables/Jyutping.bin
-%{_datadir}/scim/tables/Quick.bin
-%{_datadir}/scim/tables/Simplex.bin
-%{_datadir}/scim/tables/Stroke5.bin
-%{_datadir}/scim/tables/Wu.bin
-%{_datadir}/scim/tables/Wubi.bin
-%{_datadir}/scim/tables/Ziranma.bin
-%{_datadir}/scim/tables/ZhuYin.bin
+#%%{_datadir}/scim/tables/CangJie5.bin
+#%%{_datadir}/scim/tables/Cantonese.bin
+#%%{_datadir}/scim/tables/CantonHK.bin
+#%%{_datadir}/scim/tables/CNS11643.bin
+#%%{_datadir}/scim/tables/Dayi3.bin
+#%%{_datadir}/scim/tables/Erbi.bin
+#%%{_datadir}/scim/tables/Erbi-QS.bin
+#%%{_datadir}/scim/tables/EZ-Big.bin
+#%%{_datadir}/scim/tables/Jyutping.bin
+#%%{_datadir}/scim/tables/Quick.bin
+#%%{_datadir}/scim/tables/Simplex.bin
+#%%{_datadir}/scim/tables/Stroke5.bin
+#%%{_datadir}/scim/tables/Wu.bin
+#%%{_datadir}/scim/tables/Wubi.bin
+#%%{_datadir}/scim/tables/Ziranma.bin
+#%%{_datadir}/scim/tables/ZhuYin.bin
 %{_datadir}/scim/tables/ZhuYin-Big.bin
-%{_datadir}/scim/tables/SmartCangJie6.bin
-%{_datadir}/scim/icons/Array30.png
-%{_datadir}/scim/icons/CangJie.png
+##%{_datadir}/scim/tables/SmartCangJie6.bin
+#%%{_datadir}/scim/icons/Array30.png
+#%%{_datadir}/scim/icons/CangJie.png
 %{_datadir}/scim/icons/CangJie3.png
-%{_datadir}/scim/icons/Cantonese.png
-%{_datadir}/scim/icons/CantonHK.png
-%{_datadir}/scim/icons/CNS11643.png
-%{_datadir}/scim/icons/Dayi.png
-%{_datadir}/scim/icons/Erbi.png
-%{_datadir}/scim/icons/Erbi-QS.png
-%{_datadir}/scim/icons/EZ.png
-%{_datadir}/scim/icons/Jyutping.png
-%{_datadir}/scim/icons/Quick.png
-%{_datadir}/scim/icons/Simplex.png
-%{_datadir}/scim/icons/Stroke5.png
-%{_datadir}/scim/icons/Wu.png
-%{_datadir}/scim/icons/Wubi.png
-%{_datadir}/scim/icons/Ziranma.png
+#%%{_datadir}/scim/icons/Cantonese.png
+#%%{_datadir}/scim/icons/CantonHK.png
+#%%{_datadir}/scim/icons/CNS11643.png
+#%%{_datadir}/scim/icons/Dayi.png
+#%%{_datadir}/scim/icons/Erbi.png
+#%%{_datadir}/scim/icons/Erbi-QS.png
+#%%{_datadir}/scim/icons/EZ.png
+#%%{_datadir}/scim/icons/Jyutping.png
+#%%{_datadir}/scim/icons/Quick.png
+#%%{_datadir}/scim/icons/Simplex.png
+#%%{_datadir}/scim/icons/Stroke5.png
+#%%{_datadir}/scim/icons/Wu.png
+#%%{_datadir}/scim/icons/Wubi.png
+#%%{_datadir}/scim/icons/Ziranma.png
 %{_datadir}/scim/icons/ZhuYin.png
-%{_datadir}/scim/icons/SmartCangJie6.png
+##%{_datadir}/scim/icons/SmartCangJie6.png
 
 %if %{ENABLE_JA}
 %files ja
