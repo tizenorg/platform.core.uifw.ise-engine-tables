@@ -1697,7 +1697,13 @@ TableInstance::refresh_lookup_table (bool show, bool refresh)
              m_converted_strings.size () < m_inputted_keys.size () - 1)) {
             update_lookup_table (m_lookup_table);
         } else {
-            update_lookup_table (m_common_lookup_table);
+            if(m_inputted_keys.size ())
+            {
+                m_lookup_table.clear ();
+                update_lookup_table (m_lookup_table);
+            }
+            else
+                update_lookup_table (m_common_lookup_table);
         }
         show_lookup_table ();
     }

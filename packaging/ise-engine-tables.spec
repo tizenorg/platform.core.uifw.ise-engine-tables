@@ -1,7 +1,7 @@
 %define nam               ise-engine-tables
 %define ver               0.0.0228
 %define skim              0
-%define rel               1
+%define rel               2
 %define isf_version       1.0.0
 %define build_scim_setup  0
 %define ENABLE_JA         0
