@@ -35,6 +35,8 @@ AC_TYPE_SIZE_T
 
 # Check SCIM 
 PKG_CHECK_MODULES(SCIM,[isf >= $ISF_VERSION])
+# Check Ecore
+PKG_CHECK_MODULES(ECORE,[ecore >= 0.0])
 
 # Check if we should build setup module
 PKG_CHECK_MODULES(SCIM_GTKUTILS,[scim-gtkutils >= $SCIM_VERSION],

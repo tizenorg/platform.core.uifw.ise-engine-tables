@@ -52,6 +52,9 @@
 #include <unistd.h>
 #include <scim.h>
 #include <set>
+
+#include <Ecore_IMF.h>
+
 #include "scim_table_imengine.h"
 #include "scim_table_private.h"
 
@@ -784,7 +787,11 @@ TableInstance::reset ()
     m_inputing_key = 0;
 
     m_iconv.set_encoding (get_encoding ());
-    refresh_lookup_table (true, false);
+    if (m_lookup_table_always_on) {
+        refresh_lookup_table (true, false);
+    } else {
+        hide_lookup_table();
+    }
     hide_preedit_string ();
     hide_aux_string ();
 }
@@ -799,7 +806,7 @@ TableInstance::focus_in ()
         m_add_phrase_mode = 0;
     }
 
-    refresh_lookup_table (true, false);
+    //refresh_lookup_table (true, false);
     refresh_preedit ();
     refresh_aux_string ();
     initialize_properties ();
@@ -831,6 +838,28 @@ TableInstance::trigger_property (const String &property)
     }
 }
  
+void
+TableInstance::set_layout (unsigned int layout)
+{
+    switch (layout)
+    {
+        case ECORE_IMF_INPUT_PANEL_LAYOUT_NORMAL:
+        case ECORE_IMF_INPUT_PANEL_LAYOUT_NUMBER:
+        case ECORE_IMF_INPUT_PANEL_LAYOUT_EMAIL:
+        case ECORE_IMF_INPUT_PANEL_LAYOUT_URL:
+            refresh_lookup_table (true, false);
+            m_lookup_table_always_on = true;
+            break;
+        case ECORE_IMF_INPUT_PANEL_LAYOUT_PHONENUMBER:
+        case ECORE_IMF_INPUT_PANEL_LAYOUT_IP:
+        case ECORE_IMF_INPUT_PANEL_LAYOUT_MONTH:
+        case ECORE_IMF_INPUT_PANEL_LAYOUT_NUMBERONLY:
+            hide_lookup_table ();
+            m_lookup_table_always_on = false;
+            break;
+    }
+}
+
 void
 TableInstance::initialize_properties ()
 {

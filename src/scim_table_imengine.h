@@ -123,6 +123,8 @@ class TableInstance : public IMEngineInstanceBase
     bool m_forward;
     bool m_focused;
 
+    bool m_lookup_table_always_on;
+
     std::vector<String>     m_inputted_keys;
     std::vector<WideString> m_converted_strings;
     std::vector<uint32>     m_converted_indexes;
@@ -163,6 +165,11 @@ public:
     virtual void focus_in ();
     virtual void focus_out ();
     virtual void trigger_property (const String &property);
+
+    /**
+     * decide whether to display candidate window according to layout
+     */
+    virtual void set_layout (unsigned int layout);
 
 private:
     bool caret_left ();
