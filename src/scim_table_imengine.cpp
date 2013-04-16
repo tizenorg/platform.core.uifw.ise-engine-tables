@@ -816,6 +816,7 @@ void
 TableInstance::focus_out ()
 {
     m_focused = false;
+    reset ();
 }
 
 void
