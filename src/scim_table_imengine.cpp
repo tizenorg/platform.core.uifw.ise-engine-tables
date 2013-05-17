@@ -461,6 +461,7 @@ TableInstance::TableInstance (TableFactory *factory,
       m_single_quotation_state (false),
       m_forward (false),
       m_focused (false),
+      m_lookup_table_always_on (false),
       m_inputing_caret (0),
       m_inputing_key (0),
       m_iconv (encoding)
