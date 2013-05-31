@@ -123,8 +123,6 @@ class TableInstance : public IMEngineInstanceBase
     bool m_forward;
     bool m_focused;
 
-    bool m_lookup_table_always_on;
-
     std::vector<String>     m_inputted_keys;
     std::vector<WideString> m_converted_strings;
     std::vector<uint32>     m_converted_indexes;

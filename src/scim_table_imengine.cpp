@@ -461,7 +461,6 @@ TableInstance::TableInstance (TableFactory *factory,
       m_single_quotation_state (false),
       m_forward (false),
       m_focused (false),
-      m_lookup_table_always_on (false),
       m_inputing_caret (0),
       m_inputing_key (0),
       m_iconv (encoding)
@@ -788,8 +787,8 @@ TableInstance::reset ()
     m_inputing_key = 0;
 
     m_iconv.set_encoding (get_encoding ());
-    if (m_lookup_table_always_on) {
-        refresh_lookup_table (true, false);
+    if (!m_forward) {
+        refresh_lookup_table (true, true);
     } else {
         hide_lookup_table();
     }
@@ -849,16 +848,13 @@ TableInstance::set_layout (unsigned int layout)
         case ECORE_IMF_INPUT_PANEL_LAYOUT_NUMBER:
         case ECORE_IMF_INPUT_PANEL_LAYOUT_EMAIL:
         case ECORE_IMF_INPUT_PANEL_LAYOUT_URL:
-            refresh_lookup_table (true, false);
-            m_lookup_table_always_on = true;
+            refresh_lookup_table(true,false);
+            show_lookup_table ();
+            m_forward = false;
             break;
-        case ECORE_IMF_INPUT_PANEL_LAYOUT_PHONENUMBER:
-        case ECORE_IMF_INPUT_PANEL_LAYOUT_IP:
-        case ECORE_IMF_INPUT_PANEL_LAYOUT_MONTH:
-        case ECORE_IMF_INPUT_PANEL_LAYOUT_NUMBERONLY:
+        default:
             hide_lookup_table ();
-            m_lookup_table_always_on = false;
-            break;
+            m_forward = true;
     }
 }
 
@@ -1719,7 +1715,6 @@ TableInstance::refresh_lookup_table (bool show, bool refresh)
             }
         }
     }
-
     if (show) {
         if (m_lookup_table.number_of_candidates () &&
             (m_factory->m_table.is_always_show_lookup () ||
@@ -1727,8 +1722,9 @@ TableInstance::refresh_lookup_table (bool show, bool refresh)
              m_inputing_caret < m_inputted_keys [m_inputing_key].length () ||
              m_converted_strings.size () < m_inputted_keys.size () - 1)) {
             update_lookup_table (m_lookup_table);
-        } else {
-            if(m_inputted_keys.size ())
+        } else {        
+            if (m_inputted_keys.size () &&
+                (m_inputing_caret || m_lookup_table.number_of_candidates ()))
             {
                 m_lookup_table.clear ();
                 update_lookup_table (m_lookup_table);
@@ -1736,7 +1732,6 @@ TableInstance::refresh_lookup_table (bool show, bool refresh)
             else
                 update_lookup_table (m_common_lookup_table);
         }
-        show_lookup_table ();
     }
 }
 
