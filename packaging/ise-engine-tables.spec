@@ -8,7 +8,7 @@
 %define ENABLE_KO         0
 %define ENABLE_ADDITIONAL 0
 %define _unpackaged_files_terminate_build 0
-Summary:	SCIM Generic Table IMEngine and its data files.
+Summary:	SCIM Generic Table IMEngine and its data files
 Name:		%{nam}
 Version:	%{ver}
 Release:	%{rel}
@@ -33,7 +33,8 @@ BuildRequires:	skim-devel >= 1.2.0
 %endif
 
 %description
-This package includes Generic Table IMEngine for SCIM and many data files for it.
+This package includes Generic Table IMEngine for SCIM and many
+data files for it.
 
 %if %{skim}
 %package skim
@@ -76,7 +77,7 @@ This package includes table IM data files for Korean.
 
 %if %{ENABLE_ADDITIONAL}
 %package additional
-Summary:	Data files for additional languages.
+Summary:	Data files for additional languages
 Group:		System Environment/Libraries
 Requires:	%{nam} >= %{ver}
 
@@ -84,32 +85,6 @@ Requires:	%{nam} >= %{ver}
 This package includes table IM data files for additional languages,
 such as Russian etc..
 %endif
-#--------------------------------------------------
-
-%changelog
-* Wed Jan 5 2005 James Su <suzhe@tsinghua.org.cn>
-- Added Generic Table IMEngine module into this package.
-
-* Sun Jun 20 2004 James Su <suzhe@tsinghua.org.cn>
-- Added Amharic table.
-
-* Mon Apr 05 2004 James Su <suzhe@tsinghua.org.cn>
-- Updated Nippon table.
-- Added Yawerty table for Russian.
-
-* Fri Nov 28 2003 James Su <suzhe@turbolinux.com.cn>
-- upgraded CangJie.txt.in, added README-CangJie.txt
-
-* Tue Sep 02 2003 James Su <suzhe@turbolinux.com.cn>
-- updated table format according to SCIM 0.8.0
-- added icon files.
-
-* Wed Feb 26 2003 James Su <suzhe@turbolinux.com.cn>
-- updated table format according to SCIM 0.3.1.
-
-* Mon Nov 04 2002 James Su <suzhe@turbolinux.com.cn>
-- Initial release.
-#--------------------------------------------------
 
 %prep
 rm -rf ${RPM_BUILD_ROOT}
@@ -143,7 +118,7 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 %postun
 
 %files
-%doc AUTHORS COPYING NEWS README ChangeLog THANKS
+%attr(644,-,-) %doc AUTHORS COPYING NEWS README ChangeLog
 %doc %{_mandir}/man*/*
 %{_bindir}/scim-make-table
 %{_libdir}/scim-1.0/1.4.0/IMEngine/table.*
