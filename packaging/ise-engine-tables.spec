@@ -1,5 +1,5 @@
 %define nam               ise-engine-tables
-%define ver               0.0.0331
+%define ver               0.0.0417
 %define skim              0
 %define rel               1
 %define isf_version       1.0.0
