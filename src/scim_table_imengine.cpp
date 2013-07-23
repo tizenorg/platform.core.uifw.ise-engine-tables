@@ -789,7 +789,8 @@ TableInstance::reset ()
     m_iconv.set_encoding (get_encoding ());
     if (!m_forward) {
         refresh_lookup_table (true, true);
-        show_lookup_table ();
+        if (m_focused)
+            show_lookup_table ();
     } else {
         hide_lookup_table();
     }
