@@ -1,3 +1,7 @@
+2013-08-16 10:39  li2012.zhang@samsung.com
+
+	* Set default value of forward mode to false
+
 2013-05-31 20:10  li2012.zhang@samsung.com
 
 	* Hide candidate in NUMBERONLY layout

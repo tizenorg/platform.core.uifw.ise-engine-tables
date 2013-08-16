@@ -1,3 +1,12 @@
+* Fri Aug 16 2013 Li Zhang <li2012.zhang@samsung.com> submit/tizen_2.2/20130723.031518@27b2d5b
+- Set default value of forward mode to false
+- Avoiding suggestion bar blink when focusing in number layout
+- Add show_lookup_table in reset
+- Hide candidate in NUMBERONLY layout
+- initialize member variable
+- flush preedit string when turn off ise
+- Modified to decide whether to display candidate window according to layout style
+
 * Thu Jan 31 2013 Li Zhang <li2012.zhang@samsung.com> accepted/tizen_2.0/20130120.045825@585a4e4
 - Remove the characters out of BMP range
 - Remove unnecessary database
