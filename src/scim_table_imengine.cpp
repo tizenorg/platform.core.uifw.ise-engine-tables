@@ -4,7 +4,7 @@
 
 /*
  * Smart Common Input Method
- * 
+ *
  * Copyright (c) 2002-2005 James Su <suzhe@tsinghua.org.cn>
  * Copyright (c) 2012-2013 Samsung Electronics Co., Ltd.
  *
@@ -121,7 +121,7 @@ _get_table_list (std::vector<String> &table_list, const String &path)
 
             file = readdir (dir);
         }
-        closedir (dir);        
+        closedir (dir);
     }
 }
 
@@ -147,9 +147,9 @@ extern "C" {
         _get_table_list (_scim_sys_table_list, SCIM_TABLE_SYSTEM_TABLE_DIR);
         _get_table_list (_scim_user_table_list, scim_get_home_dir () + SCIM_TABLE_USER_TABLE_DIR);
 
-        _scim_number_of_tables = _scim_sys_table_list.size () + _scim_user_table_list.size (); 
+        _scim_number_of_tables = _scim_sys_table_list.size () + _scim_user_table_list.size ();
 
-        return _scim_number_of_tables; 
+        return _scim_number_of_tables;
     }
 
     IMEngineFactoryPointer scim_imengine_module_create_factory (unsigned int index)
@@ -459,7 +459,7 @@ TableInstance::TableInstance (TableFactory *factory,
       m_factory (factory),
       m_double_quotation_state (false),
       m_single_quotation_state (false),
-      m_forward (false),
+      m_forward (true),
       m_focused (false),
       m_inputing_caret (0),
       m_inputing_key (0),
@@ -561,7 +561,7 @@ TableInstance::process_key_event (const KeyEvent& rawkey)
         else if (key.code == SCIM_KEY_Right && key.mask == 0)
             ret = caret_right ();
 
-        //caret home 
+        //caret home
         else if (key.code == SCIM_KEY_Home && key.mask == 0)
             ret = caret_home ();
 
@@ -835,12 +835,12 @@ TableInstance::trigger_property (const String &property)
             !m_full_width_letter [m_forward?1:0];
         refresh_letter_property ();
     } else if (property == SCIM_PROP_PUNCT && m_factory->m_table.is_use_full_width_punct ()) {
-        m_full_width_punct [m_forward?1:0] = 
+        m_full_width_punct [m_forward?1:0] =
             !m_full_width_punct [m_forward?1:0];
         refresh_punct_property ();
     }
 }
- 
+
 void
 TableInstance::set_layout (unsigned int layout)
 {
@@ -1100,7 +1100,7 @@ TableInstance::insert (char ch)
             if (m_factory->m_table.is_defined_key (newkey)) {
                 m_inputted_keys.push_back (newkey);
                 m_inputing_key = 0;
-                m_inputing_caret = 1; 
+                m_inputing_caret = 1;
                 insert_ok = true;
             }
         }
@@ -1395,7 +1395,7 @@ TableInstance::lookup_page_up ()
 bool
 TableInstance::lookup_page_down ()
 {
-    if (m_inputted_keys.size () && 
+    if (m_inputted_keys.size () &&
          m_lookup_table.get_current_page_size () <
          m_lookup_table.number_of_candidates ()) {
 
@@ -1593,7 +1593,7 @@ TableInstance::refresh_preedit ()
         hide_preedit_string ();
         return;
     }
- 
+
     for (i = 0; i<m_converted_strings.size (); ++i)
         preedit_string += m_converted_strings [i];
 
@@ -1724,7 +1724,7 @@ TableInstance::refresh_lookup_table (bool show, bool refresh)
              m_inputing_caret < m_inputted_keys [m_inputing_key].length () ||
              m_converted_strings.size () < m_inputted_keys.size () - 1)) {
             update_lookup_table (m_lookup_table);
-        } else {        
+        } else {
             if (m_inputted_keys.size () &&
                 (m_inputing_caret || m_lookup_table.number_of_candidates ()))
             {
@@ -1789,7 +1789,7 @@ bool
 TableInstance::match_key_event (const std::vector<KeyEvent>& keyvec,
                                       const KeyEvent& key)
 {
-    std::vector<KeyEvent>::const_iterator kit; 
+    std::vector<KeyEvent>::const_iterator kit;
 
     for (kit = keyvec.begin (); kit != keyvec.end (); ++kit) {
         if (key.code == kit->code && key.mask == kit->mask)
