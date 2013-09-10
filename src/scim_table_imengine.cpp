@@ -544,7 +544,7 @@ TableInstance::process_key_event (const KeyEvent& rawkey)
         }
 
         //reset key
-        if (key.code == SCIM_KEY_Escape && key.mask == 0) {
+        if (key.code == SCIM_KEY_Escape) {
             if (m_inputted_keys.size () == 0 && m_add_phrase_mode != 1)
                 ret = false;
             else {
@@ -554,27 +554,27 @@ TableInstance::process_key_event (const KeyEvent& rawkey)
         }
 
         //caret left
-        else if (key.code == SCIM_KEY_Left && key.mask == 0)
+        else if (key.code == SCIM_KEY_Left)
             ret = caret_left ();
 
         //caret right
-        else if (key.code == SCIM_KEY_Right && key.mask == 0)
+        else if (key.code == SCIM_KEY_Right)
             ret = caret_right ();
 
         //caret home
-        else if (key.code == SCIM_KEY_Home && key.mask == 0)
+        else if (key.code == SCIM_KEY_Home)
             ret = caret_home ();
 
         //caret end
-        else if (key.code == SCIM_KEY_End && key.mask == 0)
+        else if (key.code == SCIM_KEY_End)
             ret = caret_end ();
 
         //lookup table cursor up
-        else if (key.code == SCIM_KEY_Up && key.mask == 0)
+        else if (key.code == SCIM_KEY_Up)
             ret = lookup_cursor_up ();
 
         //lookup table cursor down
-        else if (key.code == SCIM_KEY_Down && key.mask == 0)
+        else if (key.code == SCIM_KEY_Down)
             ret = lookup_cursor_down ();
 
         //lookup table cursor up to longer phrase
@@ -588,11 +588,11 @@ TableInstance::process_key_event (const KeyEvent& rawkey)
             ret = lookup_cursor_down_to_shorter ();
 
         //backspace key
-        else if (key.code == SCIM_KEY_BackSpace && key.mask == 0)
+        else if (key.code == SCIM_KEY_BackSpace)
             ret = erase ();
 
         //delete key
-        else if (key.code == SCIM_KEY_Delete && key.mask == 0)
+        else if (key.code == SCIM_KEY_Delete)
             ret = erase (false);
 
         //add new phrase
