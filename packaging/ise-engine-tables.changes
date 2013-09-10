@@ -1,3 +1,6 @@
+* Tue Sep 10 2013 Li Zhang <li2012.zhang@samsung.com> submit/tizen_2.2/20130816.030416@ba89fa6
+- Support function key when Capslock On
+
 * Fri Aug 16 2013 Li Zhang <li2012.zhang@samsung.com> submit/tizen_2.2/20130723.031518@27b2d5b
 - Set default value of forward mode to false
 - Avoiding suggestion bar blink when focusing in number layout
