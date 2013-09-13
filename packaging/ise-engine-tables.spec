@@ -6,7 +6,7 @@
 %define build_scim_setup  0
 %define ENABLE_JA         0
 %define ENABLE_KO         0
-%define ENABLE_ADDITIONAL 0
+%define ENABLE_ADDITIONAL 1
 %define _unpackaged_files_terminate_build 0
 Summary:	SCIM Generic Table IMEngine and its data files
 Name:		%{nam}
@@ -197,6 +197,11 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 %if %{ENABLE_ADDITIONAL}
 %files additional
 %defattr(-, root, root)
+%{_datadir}/scim/tables/RussianTraditional.bin
+%{_datadir}/scim/icons/RussianTraditional.png
+%{_datadir}/scim/tables/greekpoly.bin
+%endif
+%if 0
 %{_datadir}/scim/tables/Amharic.bin
 %{_datadir}/scim/tables/Arabic.bin
 %{_datadir}/scim/tables/Bengali-inscript.bin
@@ -215,7 +220,6 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 %{_datadir}/scim/tables/Punjabi-inscript.bin
 %{_datadir}/scim/tables/Punjabi-jhelum.bin
 %{_datadir}/scim/tables/Punjabi-phonetic.bin
-%{_datadir}/scim/tables/RussianTraditional.bin
 %{_datadir}/scim/tables/Tamil-inscript.bin
 %{_datadir}/scim/tables/Tamil-phonetic.bin
 %{_datadir}/scim/tables/Tamil-remington.bin
@@ -241,7 +245,6 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 %{_datadir}/scim/icons/Punjabi-inscript.png
 %{_datadir}/scim/icons/Punjabi-jhelum.png
 %{_datadir}/scim/icons/Punjabi-phonetic.png
-%{_datadir}/scim/icons/RussianTraditional.png
 %{_datadir}/scim/icons/Tamil-inscript.png
 %{_datadir}/scim/icons/Tamil-phonetic.png
 %{_datadir}/scim/icons/Tamil-remington.png
@@ -267,7 +270,6 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 %{_datadir}/scim/tables/Uyghur-Romanized.bin
 %{_datadir}/scim/tables/Uyghur-Standard.bin
 %{_datadir}/scim/tables/classicalhebrew.bin
-%{_datadir}/scim/tables/greekpoly.bin
 %endif
 
 %if %{skim}

@@ -1728,7 +1728,6 @@ TableInstance::refresh_lookup_table (bool show, bool refresh)
             if (m_inputted_keys.size () &&
                 (m_inputing_caret || m_lookup_table.number_of_candidates ()))
             {
-                m_lookup_table.clear ();
                 update_lookup_table (m_lookup_table);
             }
             else
