@@ -99,7 +99,8 @@ make
 
 %install
 [ -n "$RPM_BUILD_ROOT" -a "$RPM_BUILD_ROOT" != / ] && rm -rf $RPM_BUILD_ROOT
-
+mkdir -p %{buildroot}%{_datadir}/license
+cp COPYING %{buildroot}%{_datadir}/license/%{name}
 make DESTDIR=${RPM_BUILD_ROOT} install
 
 rm -f ${RPM_BUILD_ROOT}/%{_libdir}/scim-1.0/*/*.{a,la}
@@ -127,6 +128,7 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 %{_libdir}/scim-1.0/1.4.0/SetupUI/table-imengine-setup.so
 %endif
 %{_datadir}/locale/*/LC_MESSAGES/*
+%{_datadir}/license/%{name}
 
 %files zh
 %defattr(-, root, root)
