@@ -1,3 +1,8 @@
+* Wed Mar 05 2014 Jihoon Kim <jihoon48.kim@samsung.com> accepted/tizen/20130912.195949@3907595
+- Modified to install LICENSE information
+- Add russian and greek support
+- upload ise-engine-tables-0.0.0517
+
 * Tue Sep 10 2013 Li Zhang <li2012.zhang@samsung.com> submit/tizen_2.2/20130816.030416@ba89fa6
 - Support function key when Capslock On
 
