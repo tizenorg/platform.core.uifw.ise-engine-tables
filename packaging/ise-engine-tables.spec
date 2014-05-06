@@ -93,7 +93,7 @@ rm -rf ${RPM_BUILD_ROOT}
 
 %build
 ./bootstrap
-./configure --prefix=%{_prefix} --sysconfdir=%{_sysconfdir} --mandir=%{_mandir}
+%reconfigure --prefix=%{_prefix} --sysconfdir=%{_sysconfdir} --mandir=%{_mandir}
 
 make 
 
