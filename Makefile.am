@@ -38,6 +38,9 @@ CLEANFILES		= *.bak
 
 ACLOCAL_AMFLAGS = -I m4
 
+pkgdir	= $(SCIM_PKGDIR)
+pkg_DATA	= table.xml
+
 .PHONY: update-ChangeLog
 
 update-ChangeLog:

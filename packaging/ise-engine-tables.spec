@@ -128,6 +128,7 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 %{_libdir}/scim-1.0/1.4.0/SetupUI/table-imengine-setup.so
 %endif
 %{_datadir}/locale/*/LC_MESSAGES/*
+%{_datadir}/packages/*
 %{_datadir}/license/%{name}
 
 %files zh
