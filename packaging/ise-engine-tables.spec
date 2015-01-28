@@ -12,8 +12,8 @@ Summary:	SCIM Generic Table IMEngine and its data files
 Name:		%{nam}
 Version:	%{ver}
 Release:	%{rel}
-License:	GPL
-Group:		System Environment/Libraries
+License:	GPL-2.0+
+Group:		Graphics & UI Framework/Input
 URL:		http://sourceforge.net/projects/scim
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 Source0:	%{name}-%{version}.tar.gz
@@ -39,7 +39,7 @@ data files for it.
 %if %{skim}
 %package skim
 Summary:        Skim support for Generic Table
-Group:          System/I18n
+Group:          Graphics & UI Framework/Input
 Requires:	%{name} = %{version}
 Requires:	skim >= 1.2.0
 
@@ -49,7 +49,7 @@ This package includes Skim support for Generic Table IMEngine.
 
 %package zh
 Summary:	Data files for Chinese
-Group:		System Environment/Libraries
+Group:		Graphics & UI Framework/Input
 Requires:	%{nam} >= %{ver}
 
 %description zh
@@ -58,7 +58,7 @@ This package includes table IM data files for Chinese.
 %if %{ENABLE_JA}
 %package ja
 Summary:	Data files for Japanese
-Group:		System Environment/Libraries
+Group:		Graphics & UI Framework/Input
 Requires:	%{nam} >= %{ver}
 
 %description ja
@@ -68,7 +68,7 @@ This package includes table IM data files for Japanese.
 %if %{ENABLE_KO}
 %package ko
 Summary:	Data files for Korean
-Group:		System Environment/Libraries
+Group:		Graphics & UI Framework/Input
 Requires:	%{nam} >= %{ver}
 
 %description ko
@@ -78,7 +78,7 @@ This package includes table IM data files for Korean.
 %if %{ENABLE_ADDITIONAL}
 %package additional
 Summary:	Data files for additional languages
-Group:		System Environment/Libraries
+Group:		Graphics & UI Framework/Input
 Requires:	%{nam} >= %{ver}
 
 %description additional
