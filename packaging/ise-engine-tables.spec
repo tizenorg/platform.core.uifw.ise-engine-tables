@@ -122,7 +122,7 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 %attr(644,-,-) %doc AUTHORS COPYING NEWS README ChangeLog
 %doc %{_mandir}/man*/*
 %{_bindir}/scim-make-table
-%{_libdir}/scim-1.0/1.4.0/IMEngine/table.*
+%{_libdir}/scim-1.0/1.4.0/IMEngine/table.so
 %{_datadir}/scim/icons/table.png
 %if %{build_scim_setup}
 %{_libdir}/scim-1.0/1.4.0/SetupUI/table-imengine-setup.so
