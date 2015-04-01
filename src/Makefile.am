@@ -59,9 +59,9 @@ table_la_LIBADD		= libgentable.la
 bin_PROGRAMS		= scim-make-table
 
 scim_make_table_SOURCES	= scim_make_table.cpp
-scim_make_table_CFLAGS	= @SCIM_CFLAGS@
-scim_make_table_CXXFLAGS= @SCIM_CFLAGS@
-scim_make_table_LDFLAGS	= @LTLIBINTL@ @SCIM_LIBS@
+scim_make_table_CFLAGS	= @SCIM_CFLAGS@ -fPIE
+scim_make_table_CXXFLAGS= @SCIM_CFLAGS@ -fPIE
+scim_make_table_LDFLAGS	= @LTLIBINTL@ @SCIM_LIBS@ -pie
 scim_make_table_LDADD	= libgentable.la
 
 if SCIM_BUILD_SETUP
