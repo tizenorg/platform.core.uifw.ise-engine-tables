@@ -4,12 +4,12 @@
 <description/>
 <label>keyboard</label>
 <icon/>
-<ui-application appid="6137b317-cffc-4e39-80a1-eabb903ed855" exec="/usr/lib/scim-1.0/scim-launcher" nodisplay="true" taskmanage="false" multiple="false" type="capp" hw-acceleration="use-system-setting" mainapp="true">
+<ui-application appid="org.tizen.ise-engine-tables.zhuyin-big" exec="/usr/lib/scim-1.0/scim-launcher" nodisplay="true" taskmanage="false" multiple="false" type="capp" hw-acceleration="use-system-setting" mainapp="true">
     <category name="http://tizen.org/category/ime"/>
     <label>ZhuYin Big keyboard</label>
     <label xml:lang="en-gb">ZhuYin Big keyboard</label>
 </ui-application>
-<ui-application appid="5da9d4ff-ccdd-45af-b1a5-7bd4ac0aeb5f" exec="/usr/lib/scim-1.0/scim-launcher" nodisplay="true" taskmanage="false" multiple="false" type="capp" hw-acceleration="use-system-setting" mainapp="true">
+<ui-application appid="org.tizen.ise-engine-tables.cangjie3" exec="/usr/lib/scim-1.0/scim-launcher" nodisplay="true" taskmanage="false" multiple="false" type="capp" hw-acceleration="use-system-setting" mainapp="true">
     <category name="http://tizen.org/category/ime"/>
     <label>CanJie 3 keyboard</label>
     <label xml:lang="en-gb">CanJie 3 keyboard</label>
