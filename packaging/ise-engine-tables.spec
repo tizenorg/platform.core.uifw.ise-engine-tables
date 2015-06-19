@@ -115,8 +115,10 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 [ -n "$RPM_BUILD_ROOT" -a "$RPM_BUILD_ROOT" != / ] && rm -rf $RPM_BUILD_ROOT
 
 %post
+pkg_initdb
 
 %postun
+pkg_initdb
 
 %files
 %attr(644,-,-) %doc AUTHORS COPYING NEWS README ChangeLog
