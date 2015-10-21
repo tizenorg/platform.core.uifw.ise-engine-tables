@@ -121,6 +121,7 @@ pkg_initdb
 pkg_initdb
 
 %files
+%manifest %{name}.manifest
 %attr(644,-,-) %doc AUTHORS COPYING NEWS README ChangeLog
 %doc %{_mandir}/man*/*
 %{_bindir}/scim-make-table
