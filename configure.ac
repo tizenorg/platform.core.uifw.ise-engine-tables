@@ -1,6 +1,6 @@
 # Process this file with autoconf to produce a configure script.
 #AC_INIT(scim-tables, 0.5.10, suzhe@tsinghua.org.cn) #do not forget to edit skim/configure.in.in to change the version
-AC_INIT(ise-engine-tables-zh, 1.0.0, li2012.zhang@samsung.com)
+AC_INIT(ise-engine-tables-zh, 1.0.1, li2012.zhang@samsung.com)
 AC_CONFIG_SRCDIR([src/scim_table_imengine.h])
 
 ISF_VERSION=1.0.0
