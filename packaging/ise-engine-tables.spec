@@ -135,6 +135,7 @@ pkg_initdb
 %{_datadir}/license/%{name}
 
 %files zh
+%manifest %{name}.manifest
 %defattr(-, root, root)
 #%%doc tables/zh/README-Erbi.txt tables/zh/README-CangJie.txt
 #%%{_datadir}/scim/tables/Array30.bin
@@ -180,6 +181,7 @@ pkg_initdb
 
 %if %{ENABLE_JA}
 %files ja
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %doc tables/ja/kanjidic_licence.html tables/ja/kanjidic_doc.html tables/ja/kanjidic-permission-to-use-for-scim
 %{_datadir}/scim/tables/HIRAGANA.bin
@@ -192,6 +194,7 @@ pkg_initdb
 
 %if %{ENABLE_KO}
 %files ko
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %{_datadir}/scim/tables/Hangul.bin
 %{_datadir}/scim/tables/HangulRomaja.bin
@@ -202,6 +205,7 @@ pkg_initdb
 
 %if %{ENABLE_ADDITIONAL}
 %files additional
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %{_datadir}/scim/tables/RussianTraditional.bin
 %{_datadir}/scim/icons/RussianTraditional.png
@@ -280,6 +284,7 @@ pkg_initdb
 
 %if %{skim}
 %files skim
+%manifest %{name}.manifest
 %defattr(-, root, root)
 /lib/kde*/*.so
 /share/apps/skim/pics/scim-tables.png
