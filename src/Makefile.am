@@ -51,8 +51,7 @@ table_la_LDFLAGS	= -avoid-version \
 			  -module \
 			  @LIBTOOL_EXPORT_OPTIONS@ \
 			  @LTLIBINTL@ \
-			  @SCIM_LIBS@ \
-			  @ECORE_IMF_LIBS@
+			  @SCIM_LIBS@
 
 table_la_LIBADD		= libgentable.la
 
