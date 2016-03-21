@@ -76,48 +76,48 @@ static void        destroy_all_tables ();
 
 // Module Interface.
 extern "C" {
-    void scim_module_init (void)
+    EXPORTED void scim_module_init (void)
     {
         bindtextdomain (GETTEXT_PACKAGE, SCIM_TABLE_LOCALEDIR);
         bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     }
 
-    void scim_module_exit (void)
+    EXPORTED void scim_module_exit (void)
     {
         destroy_all_tables ();
     }
 
-    GtkWidget * scim_setup_module_create_ui (void)
+    EXPORTED GtkWidget * scim_setup_module_create_ui (void)
     {
         return create_setup_window ();
     }
 
-    String scim_setup_module_get_category (void)
+    EXPORTED String scim_setup_module_get_category (void)
     {
         return String ("IMEngine");
     }
 
-    String scim_setup_module_get_name (void)
+    EXPORTED String scim_setup_module_get_name (void)
     {
         return String (_("Generic Table"));
     }
 
-    String scim_setup_module_get_description (void)
+    EXPORTED String scim_setup_module_get_description (void)
     {
         return String (_("An IMEngine Module which uses generic table input method file."));
     }
 
-    void scim_setup_module_load_config (const ConfigPointer &config)
+    EXPORTED void scim_setup_module_load_config (const ConfigPointer &config)
     {
         load_config (config);
     }
 
-    void scim_setup_module_save_config (const ConfigPointer &config)
+    EXPORTED void scim_setup_module_save_config (const ConfigPointer &config)
     {
         save_config (config);
     }
 
-    bool scim_setup_module_query_changed ()
+    EXPORTED bool scim_setup_module_query_changed ()
     {
         return query_changed ();
     }

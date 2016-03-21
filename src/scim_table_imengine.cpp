@@ -126,13 +126,13 @@ _get_table_list (std::vector<String> &table_list, const String &path)
 }
 
 extern "C" {
-    void scim_module_init (void)
+    EXPORTED void scim_module_init (void)
     {
         bindtextdomain (GETTEXT_PACKAGE, SCIM_TABLE_LOCALEDIR);
         bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     }
 
-    void scim_module_exit (void)
+    EXPORTED void scim_module_exit (void)
     {
         for (int i=0; i<_scim_number_of_tables; ++i)
             _scim_table_factories [i].reset ();
@@ -140,7 +140,7 @@ extern "C" {
         _scim_config.reset ();
     }
 
-    unsigned int scim_imengine_module_init (const ConfigPointer &config)
+    EXPORTED unsigned int scim_imengine_module_init (const ConfigPointer &config)
     {
         _scim_config = config;
 
@@ -152,7 +152,7 @@ extern "C" {
         return _scim_number_of_tables;
     }
 
-    IMEngineFactoryPointer scim_imengine_module_create_factory (unsigned int index)
+    EXPORTED IMEngineFactoryPointer scim_imengine_module_create_factory (unsigned int index)
     {
         if (index >= _scim_number_of_tables) return 0;
 
