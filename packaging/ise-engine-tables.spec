@@ -212,6 +212,8 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 %{_datadir}/scim/tables/RussianTraditional.bin
 %{_datadir}/scim/icons/RussianTraditional.png
 %{_datadir}/scim/tables/greekpoly.bin
+%{_datadir}/scim/icons/Viqr.png
+%{_datadir}/scim/tables/Viqr.bin
 %endif
 %if 0
 %{_datadir}/scim/tables/Amharic.bin
@@ -238,7 +240,6 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 %{_datadir}/scim/tables/Telugu-inscript.bin
 %{_datadir}/scim/tables/Thai.bin
 %{_datadir}/scim/tables/Translit.bin
-%{_datadir}/scim/tables/Viqr.bin
 %{_datadir}/scim/tables/Yawerty.bin
 %{_datadir}/scim/icons/Amharic.png
 %{_datadir}/scim/icons/Arabic.png
@@ -262,7 +263,6 @@ rm -f $RPM_BUILD_ROOT//lib/kde*/*.{a,la}
 %{_datadir}/scim/icons/Tamil-remington.png
 %{_datadir}/scim/icons/Telugu-inscript.png
 %{_datadir}/scim/icons/Thai.png
-%{_datadir}/scim/icons/Viqr.png
 %{_datadir}/scim/icons/Yawerty.png
 %{_datadir}/scim/icons/Hindi-remington.png
 %{_datadir}/scim/icons/Malayalam-phonetic.png
