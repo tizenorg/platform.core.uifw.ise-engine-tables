@@ -21,7 +21,6 @@ BuildRequires:  prelink
 BuildRequires:  gettext-tools
 Requires:	isf >= %{isf_version}
 BuildRequires:	isf-devel >= %{isf_version}
-BuildRequires:  pkgconfig(ecore-imf)
 
 %if %{build_scim_setup}
 Requires:	gtk2 >= 2.0.0

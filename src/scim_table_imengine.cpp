@@ -53,8 +53,6 @@
 #include <scim.h>
 #include <set>
 
-#include <Ecore_IMF.h>
-
 #include "scim_table_imengine.h"
 #include "scim_table_private.h"
 
@@ -844,20 +842,9 @@ TableInstance::trigger_property (const String &property)
 void
 TableInstance::set_layout (unsigned int layout)
 {
-    switch (layout)
-    {
-        case ECORE_IMF_INPUT_PANEL_LAYOUT_NORMAL:
-        case ECORE_IMF_INPUT_PANEL_LAYOUT_NUMBER:
-        case ECORE_IMF_INPUT_PANEL_LAYOUT_EMAIL:
-        case ECORE_IMF_INPUT_PANEL_LAYOUT_URL:
-            refresh_lookup_table(true,false);
-            show_lookup_table ();
-            m_forward = false;
-            break;
-        default:
-            hide_lookup_table ();
-            m_forward = true;
-    }
+    refresh_lookup_table(true,false);
+    show_lookup_table ();
+    m_forward = false;
 }
 
 void

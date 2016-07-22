@@ -43,8 +43,8 @@ module_LTLIBRARIES	= table.la
 
 table_la_SOURCES 	= scim_table_imengine.cpp
 
-table_la_CFLAGS		= @SCIM_CFLAGS@ @ECORE_IMF_CFLAGS@
-table_la_CXXFLAGS	= @SCIM_CFLAGS@ @ECORE_IMF_CFLAGS@
+table_la_CFLAGS		= @SCIM_CFLAGS@
+table_la_CXXFLAGS	= @SCIM_CFLAGS@
 
 table_la_LDFLAGS	= -avoid-version \
 		     	  -rpath $(moduledir) \
